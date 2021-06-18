@@ -1,7 +1,7 @@
 %{!?with_xfree86:%define with_xfree86 1}
 %bcond_with bootstrap
 
-%global release_prefix          100
+%global release_prefix          101
 
 Name:                           freetype
 Version:                        2.10.4
@@ -246,6 +246,9 @@ popd
 
 
 %changelog
+* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-101
+- UPD: New build for latest changes.
+
 * Thu Jun 17 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-100
 - UPD: Move to GitHub.
 - UPD: License.
