@@ -1,7 +1,7 @@
 %{!?with_xfree86:%define with_xfree86 1}
 %bcond_with bootstrap
 
-%global release_prefix          101
+%global release_prefix          102
 
 Name:                           freetype
 Version:                        2.10.4
@@ -9,27 +9,29 @@ Release:                        %{release_prefix}%{?dist}
 Summary:                        A free and portable font rendering engine
 License:                        (FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement
 URL:                            https://www.freetype.org
+Vendor:                         Package Store <https://pkgstore.github.io>
+Packager:                       Kitsune Solar <kitsune.solar@gmail.com>
 
-Source:                         https://download.savannah.gnu.org/releases/freetype/freetype-%{version}.tar.xz
+Source0:                        https://download.savannah.gnu.org/releases/freetype/freetype-%{version}.tar.xz
 Source1:                        https://download.savannah.gnu.org/releases/freetype/freetype-doc-%{version}.tar.xz
 Source2:                        https://download.savannah.gnu.org/releases/freetype/ft2demos-%{version}.tar.xz
 Source3:                        ftconfig.h
 
-# Signature
+# Signature.
 Source900:                      https://download.savannah.gnu.org/releases/freetype/freetype-%{version}.tar.xz.sig
 Source901:                      https://download.savannah.gnu.org/releases/freetype/freetype-doc-%{version}.tar.xz.sig
 Source902:                      https://download.savannah.gnu.org/releases/freetype/ft2demos-%{version}.tar.xz.sig
 
-# Enable subpixel rendering (ClearType)
+# Enable subpixel rendering (ClearType).
 Patch0:                         freetype-2.3.0-enable-spr.patch
-# Enable otvalid and gxvalid modules
+# Enable otvalid and gxvalid modules.
 Patch1:                         freetype-2.2.1-enable-valid.patch
-# Enable additional demos
+# Enable additional demos.
 Patch2:                         freetype-2.5.2-more-demos.patch
 Patch3:                         freetype-2.6.5-libtool.patch
 Patch4:                         freetype-2.8-multilib.patch
 Patch5:                         freetype-2.10.0-internal-outline.patch
-# Revert ABI/API change
+# Revert ABI/API change.
 Patch6:                         freetype-2.10.1-debughook.patch
 Patch7:                         freetype-2.10.4-png-memory-leak.patch
 
@@ -122,13 +124,13 @@ popd
 %{make_build}
 
 %if %{with_xfree86}
-# Build demos
+# Build demos.
 pushd ft2demos-%{version}
 %{__make} TOP_DIR=".."
 popd
 %endif
 
-# Convert FTL.txt and example3.cpp to UTF-8
+# Convert "FTL.txt" and "example3.cpp" to UTF-8.
 pushd docs
 iconv -f latin1 -t utf-8 < FTL.TXT > FTL.TXT.tmp && \
 touch -r FTL.TXT FTL.TXT.tmp && \
@@ -156,7 +158,7 @@ popd
 }
 %endif
 
-# man pages for freetype-demos
+# Man pages for freetype-demos.
 {
   for ftdemo in ftbench ftdump ftlint ftvalid ; do
     builds/unix/libtool --mode=install %{__install} -m 644 ft2demos-%{version}/man/${ftdemo}.1 %{buildroot}/%{_mandir}/man1
@@ -170,14 +172,14 @@ popd
 }
 %endif
 
-# fix multilib issues
+# Fix multilib issues.
 %define wordsize %{__isa_bits}
 
 %{__mv} %{buildroot}%{_includedir}/freetype2/freetype/config/ftconfig.h \
   %{buildroot}%{_includedir}/freetype2/freetype/config/ftconfig-%{wordsize}.h
 %{__install} -p -m 644 %{SOURCE3} %{buildroot}%{_includedir}/freetype2/freetype/config/ftconfig.h
 
-# Don't package static .a or .la files
+# Don't package static "*.a" or "*.la" files.
 %{__rm} -f %{buildroot}%{_libdir}/*.{a,la}
 
 %triggerpostun -- freetype < 2.0.5-3
@@ -246,6 +248,9 @@ popd
 
 
 %changelog
+* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-102
+- UPD: Add "Vendor" & "Packager" fields.
+
 * Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-101
 - UPD: New build for latest changes.
 
