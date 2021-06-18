@@ -278,23 +278,23 @@ popd
 - Enable support for WOFF2 streams
 - Resolves: #1725983
 
-* Thu Jun 25 2020 Package Store <pkgstore@pm.me> - 2.10.2-100
+* Thu Jun 25 2020 Package Store <kitsune.solar@gmail.com> - 2.10.2-100
 - NEW: v2.10.2.
 
-* Fri Mar 13 2020 Package Store <pkgstore@pm.me> - 2.10.1-101
+* Fri Mar 13 2020 Package Store <kitsune.solar@gmail.com> - 2.10.1-101
 - UPD: master-8f8172.
 
-* Sat Jul 27 2019 Package Store <pkgstore@pm.me> - 2.10.1-100
+* Sat Jul 27 2019 Package Store <kitsune.solar@gmail.com> - 2.10.1-100
 - NEW: v2.10.1.
 
-* Sun Jun 23 2019 Package Store <pkgstore@pm.me> - 2.10.0-101
+* Sun Jun 23 2019 Package Store <kitsune.solar@gmail.com> - 2.10.0-101
 - FIX: SPEC-file.
 
-* Sun Jun 23 2019 Package Store <pkgstore@pm.me> - 2.10.0-100
+* Sun Jun 23 2019 Package Store <kitsune.solar@gmail.com> - 2.10.0-100
 - FIX: Handling of undefined glyph [pcf].
 - UPD: Package Store.
 
-* Fri Mar 22 2019 Package Store <pkgstore@pm.me> - 2.10.0-1
+* Fri Mar 22 2019 Package Store <kitsune.solar@gmail.com> - 2.10.0-1
 - Update to 2.10.0.
 - Keep FT_Outline_New_Internal() and FT_Outline_Done_Internal().
 - for ABI compatibility but make them just throw.
@@ -302,10 +302,10 @@ popd
 - Remove them once soname has been bumped!
 - Resolves: #1689117.
 
-* Tue Mar 12 2019 Package Store <pkgstore@pm.me> - 2.9.1-8
+* Tue Mar 12 2019 Package Store <kitsune.solar@gmail.com> - 2.9.1-8
 - UPD: Package Store.
 
-* Fri Dec 21 2018 Package Store <pkgstore@pm.me> - 2.9.1-7
+* Fri Dec 21 2018 Package Store <kitsune.solar@gmail.com> - 2.9.1-7
 - UPD: Package Store.
 
 * Wed Oct 31 2018 Marek Kasik <mkasik@redhat.com> - 2.9.1-6
