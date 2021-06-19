@@ -16,7 +16,6 @@ Source0:                        https://download.savannah.gnu.org/releases/freet
 Source1:                        https://download.savannah.gnu.org/releases/freetype/freetype-doc-%{version}.tar.xz
 Source2:                        https://download.savannah.gnu.org/releases/freetype/ft2demos-%{version}.tar.xz
 Source3:                        ftconfig.h
-
 # Signature.
 Source900:                      https://download.savannah.gnu.org/releases/freetype/freetype-%{version}.tar.xz.sig
 Source901:                      https://download.savannah.gnu.org/releases/freetype/freetype-doc-%{version}.tar.xz.sig
