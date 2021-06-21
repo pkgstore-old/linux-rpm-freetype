@@ -8,6 +8,7 @@ The **FreeType** engine is a free and portable font rendering engine, developed 
 
 ```
 $ dnf copr enable pkgstore/freetype
+$ dnf install -y freetype
 ```
 
 ### Open Build Service (OBS)
