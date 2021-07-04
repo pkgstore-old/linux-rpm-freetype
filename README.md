@@ -23,6 +23,13 @@ $ dnf install -y freetype
 $ dnf upgrade -y freetype
 ```
 
+## Remove
+
+```
+$ dnf erase -y freetype
+$ dnf copr remove pkgstore/freetype
+```
+
 ## How to Build
 
 1. Get source from [src.fedoraproject.org](https://src.fedoraproject.org/rpms/freetype).
