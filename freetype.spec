@@ -196,7 +196,7 @@ popd
 
 %files
 %{!?_licensedir:%global license %%doc}
-%license docs/LICENSE.TXT docs/FTL.TXT docs/GPLv2.TXT
+%license LICENSE.TXT docs/FTL.TXT docs/GPLv2.TXT
 %{_libdir}/libfreetype.so.*
 %doc README
 
