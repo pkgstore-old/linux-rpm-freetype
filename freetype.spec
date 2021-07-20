@@ -1,10 +1,10 @@
 %{!?with_xfree86:%define with_xfree86 1}
 %bcond_with bootstrap
 
-%global release_prefix          102
+%global release_prefix          100
 
 Name:                           freetype
-Version:                        2.10.4
+Version:                        2.11.0
 Release:                        %{release_prefix}%{?dist}
 Summary:                        A free and portable font rendering engine
 License:                        (FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement
@@ -247,6 +247,9 @@ popd
 
 
 %changelog
+* Tue Jul 20 2021 Package Store <kitsune.solar@gmail.com> - 2.11.0-100
+- NEW: v2.11.0.
+
 * Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-102
 - UPD: Add "Vendor" & "Packager" fields.
 
