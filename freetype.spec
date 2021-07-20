@@ -145,28 +145,28 @@ popd
 %{make_install} gnulocaledir=%{buildroot}%{_datadir}/locale
 
 {
-  for ftdemo in ftbench ftchkwd ftmemchk ftpatchk fttimer ftdump ftlint ftvalid ; do
-    builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}/%{_bindir}
+  for ftdemo in ftbench ftmemchk ftpatchk fttimer ftdump ftlint ftvalid; do
+    builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}%{_bindir}
   done
 }
 %if %{with_xfree86}
 {
   for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring fttimer ftview; do
-    builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}/%{_bindir}
+    builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}%{_bindir}
   done
 }
 %endif
 
 # Man pages for freetype-demos.
 {
-  for ftdemo in ftbench ftdump ftlint ftvalid ; do
-    builds/unix/libtool --mode=install %{__install} -m 644 ft2demos-%{version}/man/${ftdemo}.1 %{buildroot}/%{_mandir}/man1
+  for ftdemo in ftbench ftdump ftlint ftvalid; do
+    builds/unix/libtool --mode=install %{__install} -m 644 ft2demos-%{version}/man/${ftdemo}.1 %{buildroot}%{_mandir}/man1
   done
 }
 %if %{with_xfree86}
 {
-  for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring ftview ; do
-    builds/unix/libtool --mode=install %{__install} -m 644 ft2demos-%{version}/man/${ftdemo}.1 %{buildroot}/%{_mandir}/man1
+  for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring ftview; do
+    builds/unix/libtool --mode=install %{__install} -m 644 ft2demos-%{version}/man/${ftdemo}.1 %{buildroot}%{_mandir}/man1
   done
 }
 %endif
