@@ -151,7 +151,7 @@ popd
 }
 %if %{with_xfree86}
 {
-  for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring fttimer ftview; do
+  for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring ftview; do
     builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}%{_bindir}
   done
 }
