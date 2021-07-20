@@ -26,7 +26,7 @@ Patch0:                         freetype-2.3.0-enable-spr.patch
 # Enable otvalid and gxvalid modules.
 Patch1:                         freetype-2.2.1-enable-valid.patch
 # Enable additional demos.
-Patch2:                         freetype-2.5.2-more-demos.patch
+# Patch2:                       freetype-2.5.2-more-demos.patch
 Patch3:                         freetype-2.6.5-libtool.patch
 Patch4:                         freetype-2.8-multilib.patch
 Patch5:                         freetype-2.10.0-internal-outline.patch
