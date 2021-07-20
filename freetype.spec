@@ -145,7 +145,7 @@ popd
 %{make_install} gnulocaledir=%{buildroot}%{_datadir}/locale
 
 {
-  for ftdemo in ftbench ftmemchk ftpatchk fttimer ftdump ftlint ftvalid; do
+  for ftdemo in ftbench ftdump ftlint ftvalid; do
     builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}%{_bindir}
   done
 }
@@ -203,10 +203,6 @@ popd
 
 %files demos
 %{_bindir}/ftbench
-%{_bindir}/ftchkwd
-%{_bindir}/ftmemchk
-%{_bindir}/ftpatchk
-%{_bindir}/fttimer
 %{_bindir}/ftdump
 %{_bindir}/ftlint
 %{_bindir}/ftvalid
