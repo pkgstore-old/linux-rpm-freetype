@@ -97,7 +97,7 @@ FreeType.
 %patch1 -p1 -b .enable-valid
 
 pushd ft2demos-%{version}
-%patch2 -p1 -b .more-demos
+# %patch2 -p1 -b .more-demos
 popd
 
 %patch3 -p1 -b .libtool
