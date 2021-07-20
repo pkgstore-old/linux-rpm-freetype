@@ -32,7 +32,7 @@ Patch4:                         freetype-2.8-multilib.patch
 Patch5:                         freetype-2.10.0-internal-outline.patch
 # Revert ABI/API change.
 Patch6:                         freetype-2.10.1-debughook.patch
-Patch7:                         freetype-2.10.4-png-memory-leak.patch
+# Patch7:                       freetype-2.10.4-png-memory-leak.patch
 
 BuildRequires:                  gcc
 BuildRequires:                  libX11-devel
@@ -104,7 +104,7 @@ popd
 %patch4 -p1 -b .multilib
 %patch5 -p1 -b .internal-outline
 %patch6 -p1 -b .debughook
-%patch7 -p1 -b .png-memory-leak
+# %patch7 -p1 -b .png-memory-leak
 
 %build
 %configure  --disable-static         \
