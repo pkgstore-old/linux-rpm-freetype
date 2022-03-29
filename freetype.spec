@@ -4,7 +4,7 @@
 %global release_prefix          100
 
 Name:                           freetype
-Version:                        2.11.0
+Version:                        2.11.1
 Release:                        %{release_prefix}%{?dist}
 Summary:                        A free and portable font rendering engine
 License:                        (FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement
@@ -26,13 +26,12 @@ Patch0:                         freetype-2.3.0-enable-spr.patch
 # Enable otvalid and gxvalid modules.
 Patch1:                         freetype-2.2.1-enable-valid.patch
 # Enable additional demos.
-# Patch2:                       freetype-2.5.2-more-demos.patch
+Patch2:                         freetype-2.5.2-more-demos.patch
 Patch3:                         freetype-2.6.5-libtool.patch
 Patch4:                         freetype-2.8-multilib.patch
 Patch5:                         freetype-2.10.0-internal-outline.patch
 # Revert ABI/API change.
 Patch6:                         freetype-2.10.1-debughook.patch
-# Patch7:                       freetype-2.10.4-png-memory-leak.patch
 
 BuildRequires:                  gcc
 BuildRequires:                  libX11-devel
@@ -97,14 +96,13 @@ FreeType.
 %patch1 -p1 -b .enable-valid
 
 pushd ft2demos-%{version}
-# %patch2 -p1 -b .more-demos
+%patch2  -p1 -b .more-demos
 popd
 
 %patch3 -p1 -b .libtool
 %patch4 -p1 -b .multilib
 %patch5 -p1 -b .internal-outline
 %patch6 -p1 -b .debughook
-# %patch7 -p1 -b .png-memory-leak
 
 %build
 %configure  --disable-static         \
@@ -145,13 +143,13 @@ popd
 %{make_install} gnulocaledir=%{buildroot}%{_datadir}/locale
 
 {
-  for ftdemo in ftbench ftdump ftlint ftvalid; do
+  for ftdemo in ftbench ftchkwd ftmemchk ftpatchk fttimer ftdump ftlint ftvalid; do
     builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}%{_bindir}
   done
 }
 %if %{with_xfree86}
 {
-  for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring ftview; do
+  for ftdemo in ftdiff ftgamma ftgrid ftmulti ftstring fttimer ftview; do
     builds/unix/libtool --mode=install %{__install} -m 755 ft2demos-%{version}/bin/${ftdemo} %{buildroot}%{_bindir}
   done
 }
@@ -203,6 +201,10 @@ popd
 
 %files demos
 %{_bindir}/ftbench
+%{_bindir}/ftchkwd
+%{_bindir}/ftmemchk
+%{_bindir}/ftpatchk
+%{_bindir}/fttimer
 %{_bindir}/ftdump
 %{_bindir}/ftlint
 %{_bindir}/ftvalid
@@ -243,6 +245,21 @@ popd
 
 
 %changelog
+* Tue Mar 29 2022 Package Store <pkgstore@mail.ru> - 2.11.1-100
+- UPD: Rebuild by Package Store.
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.11.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sat Dec 4 2021 Diego Herrera <dherrera@redhat.com> - 2.11.1-1
+- Update to 2.11.1
+
+* Thu Jul 22 2021 Marek Kasik <mkasik@redhat.com> - 2.11.0-1
+- Update to 2.11.0
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.4-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Tue Jul 20 2021 Package Store <kitsune.solar@gmail.com> - 2.11.0-100
 - NEW: v2.11.0.
 

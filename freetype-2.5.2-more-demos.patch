@@ -14,4 +14,4 @@
 +  EXES += fttimer
    # EXES += testname
  
-   exes: $(EXES:%=$(BIN_DIR_2)/%$E)
+   # Not all demo programs have a man page; we thus check for existence in a
