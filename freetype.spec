@@ -1,7 +1,7 @@
 %{!?with_xfree86:%define with_xfree86 1}
 %bcond_with bootstrap
 
-%global release_prefix          100
+%global release_prefix          1000
 
 Name:                           freetype
 Version:                        2.11.1
@@ -9,29 +9,23 @@ Release:                        %{release_prefix}%{?dist}
 Summary:                        A free and portable font rendering engine
 License:                        (FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement
 URL:                            https://www.freetype.org
-Vendor:                         Package Store <https://pkgstore.github.io>
-Packager:                       Kitsune Solar <kitsune.solar@gmail.com>
 
-Source0:                        https://download.savannah.gnu.org/releases/freetype/freetype-%{version}.tar.xz
-Source1:                        https://download.savannah.gnu.org/releases/freetype/freetype-doc-%{version}.tar.xz
-Source2:                        https://download.savannah.gnu.org/releases/freetype/ft2demos-%{version}.tar.xz
+Source0:                        %{name}-%{version}.tar.xz
+Source1:                        %{name}-doc-%{version}.tar.xz
+Source2:                        ft2demos-%{version}.tar.xz
 Source3:                        ftconfig.h
-# Signature.
-Source900:                      https://download.savannah.gnu.org/releases/freetype/freetype-%{version}.tar.xz.sig
-Source901:                      https://download.savannah.gnu.org/releases/freetype/freetype-doc-%{version}.tar.xz.sig
-Source902:                      https://download.savannah.gnu.org/releases/freetype/ft2demos-%{version}.tar.xz.sig
 
 # Enable subpixel rendering (ClearType).
-Patch0:                         freetype-2.3.0-enable-spr.patch
+Patch0:                         %{name}-2.3.0-enable-spr.patch
 # Enable otvalid and gxvalid modules.
-Patch1:                         freetype-2.2.1-enable-valid.patch
+Patch1:                         %{name}-2.2.1-enable-valid.patch
 # Enable additional demos.
-Patch2:                         freetype-2.5.2-more-demos.patch
-Patch3:                         freetype-2.6.5-libtool.patch
-Patch4:                         freetype-2.8-multilib.patch
-Patch5:                         freetype-2.10.0-internal-outline.patch
+Patch2:                         %{name}-2.5.2-more-demos.patch
+Patch3:                         %{name}-2.6.5-libtool.patch
+Patch4:                         %{name}-2.8-multilib.patch
+Patch5:                         %{name}-2.10.0-internal-outline.patch
 # Revert ABI/API change.
-Patch6:                         freetype-2.10.1-debughook.patch
+Patch6:                         %{name}-2.10.1-debughook.patch
 
 BuildRequires:                  gcc
 BuildRequires:                  libX11-devel
@@ -46,7 +40,7 @@ BuildRequires:                  harfbuzz-devel
 
 Provides:                       %{name}-bytecode
 Provides:                       %{name}-subpixel
-Obsoletes:                      freetype-freeworld < 2.9.1-2
+Obsoletes:                      %{name}-freeworld < 2.9.1-2
 
 %description
 The FreeType engine is a free and portable font rendering
@@ -189,7 +183,7 @@ popd
   exit 0
 }
 
-%ldconfig_scriptlets
+%{ldconfig_scriptlets}
 
 
 %files
@@ -245,6 +239,10 @@ popd
 
 
 %changelog
+* Thu Mar 31 2022 Package Store <pkgstore@mail.ru> - 2.11.1-1000
+- UPD: Rebuild by Package Store.
+- UPD: File "freetype.spec".
+
 * Tue Mar 29 2022 Package Store <pkgstore@mail.ru> - 2.11.1-100
 - UPD: Rebuild by Package Store.
 
@@ -259,19 +257,6 @@ popd
 
 * Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.4-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Tue Jul 20 2021 Package Store <kitsune.solar@gmail.com> - 2.11.0-100
-- NEW: v2.11.0.
-
-* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-102
-- UPD: Add "Vendor" & "Packager" fields.
-
-* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-101
-- UPD: New build for latest changes.
-
-* Thu Jun 17 2021 Package Store <kitsune.solar@gmail.com> - 2.10.4-100
-- UPD: Move to GitHub.
-- UPD: License.
 
 * Fri Feb 5 2021 Akira TAGOH <tagoh@redhat.com> - 2.10.4-3
 - Enable HarfBuzz support
@@ -301,35 +286,32 @@ popd
 - Enable support for WOFF2 streams
 - Resolves: #1725983
 
-* Thu Jun 25 2020 Package Store <kitsune.solar@gmail.com> - 2.10.2-100
-- NEW: v2.10.2.
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
-* Fri Mar 13 2020 Package Store <kitsune.solar@gmail.com> - 2.10.1-101
-- UPD: master-8f8172.
+* Sat Oct 12 2019 Michael Kuhn <suraia@fedoraproject.org> - 2.10.1-1
+- Update to 2.10.1
+- Revert FT_DebugHook_Func ABI/API changes
 
-* Sat Jul 27 2019 Package Store <kitsune.solar@gmail.com> - 2.10.1-100
-- NEW: v2.10.1.
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
-* Sun Jun 23 2019 Package Store <kitsune.solar@gmail.com> - 2.10.0-101
-- FIX: SPEC-file.
+* Tue Jun 11 09:42:57 CEST 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2.10.0-2
+- Fix handling of undefined glyph [pcf]
 
-* Sun Jun 23 2019 Package Store <kitsune.solar@gmail.com> - 2.10.0-100
-- FIX: Handling of undefined glyph [pcf].
-- UPD: Package Store.
-
-* Fri Mar 22 2019 Package Store <kitsune.solar@gmail.com> - 2.10.0-1
-- Update to 2.10.0.
-- Keep FT_Outline_New_Internal() and FT_Outline_Done_Internal().
-- for ABI compatibility but make them just throw.
+* Tue May 28 2019 Marek Kasik <mkasik@redhat.com> - 2.10.0-1
+- Update to 2.10.0
+- Keep FT_Outline_New_Internal() and FT_Outline_Done_Internal()
+- for ABI compatibility but make them just throw
 - Unimplemented_Feature error.
 - Remove them once soname has been bumped!
-- Resolves: #1689117.
+- Resolves: #1689117
 
-* Tue Mar 12 2019 Package Store <kitsune.solar@gmail.com> - 2.9.1-8
-- UPD: Package Store.
+* Mon Apr 8 2019 Marek Kasik <mkasik@redhat.com> - 2.9.1-8
+- Remove freetype-2.9-ftsmooth.patch
 
-* Fri Dec 21 2018 Package Store <kitsune.solar@gmail.com> - 2.9.1-7
-- UPD: Package Store.
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.9.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Wed Oct 31 2018 Marek Kasik <mkasik@redhat.com> - 2.9.1-6
 - Obsolete freetype-freeworld
