@@ -183,7 +183,7 @@ popd
   exit 0
 }
 
-%{ldconfig_scriptlets}
+%ldconfig_scriptlets
 
 
 %files
