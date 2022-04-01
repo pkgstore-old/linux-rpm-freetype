@@ -4,7 +4,7 @@
 %global release_prefix          1000
 
 Name:                           freetype
-Version:                        2.11.1
+Version:                        2.12.0
 Release:                        %{release_prefix}%{?dist}
 Summary:                        A free and portable font rendering engine
 License:                        (FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement
@@ -239,6 +239,9 @@ popd
 
 
 %changelog
+* Fri Apr 01 2022 Package Store <pkgstore@mail.ru> - 2.12.0-1000
+- NEW: FreeType v2.12.0.
+
 * Thu Mar 31 2022 Package Store <pkgstore@mail.ru> - 2.11.1-1000
 - UPD: Rebuild by Package Store.
 - UPD: File "freetype.spec".
